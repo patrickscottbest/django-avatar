@@ -37,7 +37,7 @@ def avatar_path_handler(instance=None, filename=None, size=None, ext=None):
         tmp = hashlib.md5(force_bytes(get_username(instance.user))).hexdigest()
         tmppath.extend(tmp[0:2])
     if settings.AVATAR_EXPOSE_USERNAMES:
-        tmppath.append(get_username(instance.user))
+        tmppath.append(get_username(instance.user.userprofile.uuid))
     else:
         tmppath.append(force_text(instance.user.pk))
     if not filename:
